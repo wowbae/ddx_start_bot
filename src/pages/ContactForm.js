@@ -96,9 +96,8 @@ export default function ContactForm (props) {
       </div>
       
       {/* Начинается форма */}
-      <form action="#" method="POST" className="mx-auto mt-12 max-w-xl sm:mt-20">
-        <div className="px-10 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-          
+      <form action="#" method="POST" className="mx-auto mt-12 max-w-xl">
+        <div className="px-8 sm:px-0 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
             <label htmlFor="first-name" className="
               block text-sm font-semibold leading-6 text-gray-900">
@@ -179,7 +178,7 @@ export default function ContactForm (props) {
               />
             </div>
           </div>
-          <div className="sm:col-span-2">
+          <div className="sm:col-span-1">
             <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
               Пожелания по дате, времени и тренеру
             </label>
@@ -195,29 +194,14 @@ export default function ContactForm (props) {
             </div>
           </div>
 
-          <div>
-            
-            <div 
-            hidden={true}
-            className="mt-2.5">
-              <input
-                type="text"
-                defaultValue={gymName || ''}
-                id="gymName"
-                autoComplete = "off"
-                className="block w-full rounded-md border-0 px-3.5 py-2
-                text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
-                placeholder:text-gray-400 
-                focus:ring-2 focus:ring-inset focus:ring-indigo-600 
-                sm:text-sm sm:leading-6"
-              />
-            </div>
+          <div className=''>
             <label className="
-              block text-sm font-semibold leading-6 text-gray-900">
+              text-sm font-semibold leading-6 text-gray-900">
               Ваш клуб: {gymName}
             </label>
 
-            <div className='mt-5 inline-flex items-center'> 
+            {/* политика конфиденциальности */}
+            <div className='mt-7 grid sm:align-bottom'> 
             <Switch.Group as="div" className="
               flex sm:col-span-2">
 
@@ -253,38 +237,32 @@ export default function ContactForm (props) {
             </div>
 
             {/* нижний div это кнопки */}
-        <div className="mt-5">
-          <div className='
-           gap-4 grid grid-cols-2 items-baseline text-center'>
-            <button
-                type="button"
-                onClick={routeChange}
-                className="block w-full rounded-md h-9 border-orange-300 border-2  
-                text-center text-sm font-semibold
-                text-orange-400 shadow-sm hover:bg-orange-300 hover:text-white
-                focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
-                focus-visible:outline-indigo-600">
-                Сменить клуб
-            </button>
+            <div className='
+            mt-0 gap-4 grid grid-cols-2 items-baseline text-center'>
+              <button
+                  type="button"
+                  onClick={routeChange}
+                  className="block w-full rounded-md h-9 border-orange-300 border-2  
+                  text-center text-sm font-semibold
+                  text-orange-400 shadow-sm hover:bg-orange-300 hover:text-white
+                  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
+                  focus-visible:outline-indigo-600">
+                  Сменить клуб
+              </button>
 
-            <button
-              type="submit"
-              className="mt-4 h-9 w-auto rounded-md
-              bg-indigo-600 px-3.5 text-center text-sm font-semibold 
-              text-white shadow-sm hover:bg-indigo-500 focus-visible:outline 
-              focus-visible:outline-2 focus-visible:outline-offset-2 
-              focus-visible:outline-indigo-600"
-              onClick={ handleSubmit }
-            > Отправить
-            </button>
-          </div>       
-        </div>
-
+              <button
+                type="submit"
+                className="mt-4 h-9 w-auto rounded-md
+                bg-indigo-600 px-3.5 text-center text-sm font-semibold 
+                text-white shadow-sm hover:bg-indigo-500 focus-visible:outline 
+                focus-visible:outline-2 focus-visible:outline-offset-2 
+                focus-visible:outline-indigo-600"
+                onClick={ handleSubmit }
+              > Отправить
+              </button>
+            </div>   
           </div>
         </div>
-
-          
-        
       </form>
     </div>
   )
