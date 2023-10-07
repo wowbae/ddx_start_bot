@@ -58,7 +58,7 @@ export const Welcome = () => {
                   justify-self-center
                   px-6 py-24 
                   sm:py-32 lg:px-8">
-              <h1 className="mb-6 text-center font-bold text-2xl">Добро пожаловать в DDX Fitness 🦾</h1>
+              <h1 className="mb-10 text-center font-bold text-2xl">Добро пожаловать в DDX Fitness 🦾</h1>
               <div className="grid gap-2 text-center items-center align-middle">
                   <span className="text-sm text-slate-500 text-">Выберите ваш клуб</span>
                   
@@ -77,7 +77,7 @@ export const Welcome = () => {
                   </div>
               </div>
           </div>
-          <footer className="footer static">
+          <footer className="footer fixed align-bottom">
               <a 
                   href='https://t.me/wowbae'
                   target="_blank"
