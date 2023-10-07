@@ -50,6 +50,7 @@ export const Welcome = () => {
         grid 
         grid-rows-2
         h-screen
+        min-h-fit
         justify-self-center
         mt-0">
         {/* <div className="w-full grid grid-cols-1 p-20 mt-32 gap-6"> */}
