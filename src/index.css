@@ -12,8 +12,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-// добавил из https://codepen.io/anon/pen/bpboby
-// и https://www.w3.org/Style/Examples/007/center.ru.tmpl
 body {
   display: flex;
   flex-direction: column;
@@ -33,7 +31,6 @@ body {
 .body {
   flex: 1 1 auto;
 }
-// добавил из https://codepen.io/anon/pen/bpboby
 
 
 code {
