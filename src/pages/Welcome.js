@@ -77,7 +77,7 @@ export const Welcome = () => {
                   </div>
               </div>
           </div>
-          <footer className="footer">
+          <footer className="footer static">
               <a 
                   href='https://t.me/wowbae'
                   target="_blank"
