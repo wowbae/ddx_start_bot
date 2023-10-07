@@ -7,9 +7,13 @@ import { XIcon } from '@heroicons/react/solid'
 export default function Notification (props) {
   const [show, setShow] = useState(true)
 
+  setTimeout(() => { 
+      setShow(false); 
+    }, 3000)
+
   return (
     <>
-      {console.log('started')}
+      {/* {console.log('started')} */}
       {/* Global notification live region, render this permanently at the end of the document */}
       <div
         aria-live="assertive"
