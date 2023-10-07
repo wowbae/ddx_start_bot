@@ -70,7 +70,7 @@ export default function ContactForm (props) {
         )
     } else
     render (
-      <Notification msg={'Введите пожалуйста имя и телефон для связи 🙏🏼'} />
+        <Notification msg={'Введите пожалуйста имя и телефон для связи 🙏🏼'} />
     )
   }
 
@@ -96,8 +96,8 @@ export default function ContactForm (props) {
       </div>
       
       {/* Начинается форма */}
-      <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
-        <div className="px-12 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+      <form action="#" method="POST" className="mx-auto mt-12 max-w-xl sm:mt-20">
+        <div className="px-10 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           
           <div>
             <label htmlFor="first-name" className="
@@ -251,11 +251,8 @@ export default function ContactForm (props) {
                 </Switch.Label>
               </Switch.Group>
             </div>
-          </div>
-        </div>
 
-          
-        {/* нижний div это кнопки */}
+            {/* нижний div это кнопки */}
         <div className="mt-5">
           <div className='
            gap-4 grid grid-cols-2 items-baseline text-center'>
@@ -282,6 +279,12 @@ export default function ContactForm (props) {
             </button>
           </div>       
         </div>
+
+          </div>
+        </div>
+
+          
+        
       </form>
     </div>
   )
