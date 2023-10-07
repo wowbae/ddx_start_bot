@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Combobox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
@@ -30,7 +30,7 @@ export default function MyCombobox () {
         
   function handleChange(event) {
     let e = event.target.value
-    setValue(e);
+      setValue(e)
     let f = gyms.filter((gym) => {
       return gym.name.toLowerCase().includes(e.toLowerCase())
     })
@@ -40,11 +40,13 @@ export default function MyCombobox () {
     }
   }
 
+
   let navigate = useNavigate(); 
   const routeChange = (path, data) => { 
     // path = `/form`; 
     navigate(path, data);
   }
+
 
   return (
     // <div className="fixed top-16 w-72">
@@ -57,9 +59,7 @@ export default function MyCombobox () {
             <Combobox.Input
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
               displayValue={(gym) => gym.name}
-              // onChange={(event) => setQuery(event.target.value)}
               onChange={handleChange}
-              
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
               <SelectorIcon
