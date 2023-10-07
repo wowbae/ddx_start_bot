@@ -78,7 +78,7 @@ export const Welcome = () => {
               </div>
           </div>
       </div>
-      <footer className="footer absolute align-bottom pb-10">
+      <footer className="footer absolute align-bottom pb-14">
           <a 
               href='https://t.me/wowbae'
               target="_blank"
