@@ -6,23 +6,28 @@ import { ChevronDownIcon } from '@heroicons/react/solid'
 import { Switch } from '@headlessui/react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { Bot, InlineKeyboard } from "grammy";
-
+import Notification from '../components/ui/Notification'
+import MyModal from '../components/ui/MyModal';
+import { render } from '@testing-library/react';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const bot = new Bot("5312475410:AAEqIlh5nUPxdFpq1J_tab7LGJGR7ILvoSw"); 
-// const myId = 251465357
-
 export default function ContactForm (props) {
   const [agreed, setAgreed] = useState(false)
-
   let navigate = useNavigate(); 
   const routeChange = (path, data) => { 
     path = `/`; 
     navigate(path, data);
   }
+
+  const bot = new Bot("5312475410:AAEqIlh5nUPxdFpq1J_tab7LGJGR7ILvoSw"); 
+  const myId = 251465357
+  const location = useLocation();
+  const gymName = location.state.name;
+  let chatId = location.state.chatId;
+
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -32,8 +37,6 @@ export default function ContactForm (props) {
     last_name = document.getElementById ('last-name').value,
     message = document.getElementById ('message').value,
     prefix =  document.getElementById ('country').value
-    // agreed =  document.getElementById ('switch').aria-checked
-    
 
     let
     phone = document.getElementById ('phone-number').value
@@ -47,34 +50,33 @@ export default function ContactForm (props) {
     } 
 
     const msg = 
-    `Новый запрос на ФТ:\n\nФИО: ${last_name+' '+first_name}\nТелефон: <code>${phone}</code>\nПожелания: '${message}'`,
+    `Новый запрос на ФТ ✅\n${chatId ? '' : (chatId = myId, '\nКлуб: ' + gymName )}\nФИО: ${last_name+' '+first_name}\nТелефон: <code>${phone}</code>\n\nПожелания:\n"${message}"`,
     linkWa = 'wa.me/'+ phone.slice(1),
     linkTg = 't.me/'+ phone,
     keys = new InlineKeyboard()
     .url("WhatsApp", linkWa)
     .url("Telegram", linkTg)
-    
-    // console.log(document.getElementById ('switch'));
-
-    if (agreed && first_name && phone) {
+     
+    if (first_name && phone) {
+        if (agreed) {
         bot.api.sendMessage (chatId, msg, {
-        parse_mode: 'html',
-        reply_markup: keys
-      })
-    }
-    else alert ('Пожалуйста, согласитесь с политикой конфиденциальности ')
-    
-    // Здесь вы можете добавить логику для отправки данных в базу данных и в Telegram
-    // ...
+          parse_mode: 'html',
+          reply_markup: keys
+        })
+        // render(<Notification />)
+      } else 
+        render (
+          <Notification msg={'Пожалуйста, согласитесь с политикой конфиденциальности 🙏🏼'} />
+        )
+    } else
+    render (
+      <Notification msg={'Введите пожалуйста имя и телефон для связи 🙏🏼'} />
+    )
   }
 
-  const location = useLocation();
-  const gymName = location.state.name;
-  const chatId = location.state.chatId;
-
+  
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
-
       <div
         className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
         aria-hidden={true}>
@@ -188,7 +190,7 @@ export default function ContactForm (props) {
                 id="message"
                 rows={5}
                 className="h-auto block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                defaultValue={'Добрый день! Хочу пройти фитнес диагностику.\n\nУдобный день:\nВремя:'}
+                defaultValue={'Добрый день! Хочу пройти фитнес диагностику.\nУдобные дни: \nВремя: '}
               />
             </div>
           </div>
@@ -270,15 +272,13 @@ export default function ContactForm (props) {
 
             <button
               type="submit"
-              // onClick={}
               className="mt-4 h-9 w-auto rounded-md
               bg-indigo-600 px-3.5 text-center text-sm font-semibold 
               text-white shadow-sm hover:bg-indigo-500 focus-visible:outline 
               focus-visible:outline-2 focus-visible:outline-offset-2 
               focus-visible:outline-indigo-600"
               onClick={ handleSubmit }
-            >
-              Отправить
+            > Отправить
             </button>
           </div>       
         </div>
