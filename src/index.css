@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,6 +11,30 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+// добавил из https://codepen.io/anon/pen/bpboby
+// и https://www.w3.org/Style/Examples/007/center.ru.tmpl
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: stretch;
+  min-height: 100%;
+}
+.footer {
+  flex: 0 1 auto;
+  position: absolute;
+  bottom: 0;
+  justify-content: center;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%) 
+}
+.body {
+  flex: 1 1 auto;
+}
+// добавил из https://codepen.io/anon/pen/bpboby
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
