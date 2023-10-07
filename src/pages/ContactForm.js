@@ -236,7 +236,7 @@ export default function ContactForm (props) {
 
         <div className="text-center mt-10">
 
-        <div className='ml-16 mt-0 '>
+        <div className='mx-16 '>
             <Switch.Group as="div" className="text-center flex gap-x-4 sm:col-span-2">
               <div className="flex h-6 items-center">
                 <Switch
