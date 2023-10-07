@@ -58,9 +58,9 @@ export const Welcome = () => {
           w-10/12 
           flex-col
           justify-self-center
-          px-6 py-40 
-          sm:py-40 lg:px-8">
-          <h1 className="mb-10 text-center font-bold text-2xl">Добро пожаловать в DDX Fitness 🦾</h1>
+          px-6 py-44 
+          sm:py-44 lg:px-8">
+          <h1 className="mb-14 text-center font-bold text-2xl">Добро пожаловать в DDX Fitness 🦾</h1>
           <div className="grid gap-2 text-center items-center align-middle">
               <span className="text-sm text-slate-500 text-">Выберите ваш клуб</span>
               {/* w-1/3  */}
@@ -78,7 +78,7 @@ export const Welcome = () => {
               </div>
           </div>
       </div>
-      <footer className="footer fixed align-bottom">
+      <footer className="footer absolute align-bottom pb-5">
           <a 
               href='https://t.me/wowbae'
               target="_blank"
