@@ -56,7 +56,7 @@ export default function ContactForm (props) {
     
     // console.log(document.getElementById ('switch'));
 
-    if (agreed) {
+    if (agreed && first_name && phone) {
         bot.api.sendMessage (chatId, msg, {
         parse_mode: 'html',
         reply_markup: keys
@@ -186,9 +186,9 @@ export default function ContactForm (props) {
                 autoComplete = "off"
                 name="message"
                 id="message"
-                rows={4}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                defaultValue={''}
+                rows={5}
+                className="h-auto block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                defaultValue={'Добрый день! Хочу пройти фитнес диагностику.\n\nУдобный день:\nВремя:'}
               />
             </div>
           </div>
@@ -254,7 +254,7 @@ export default function ContactForm (props) {
 
           
         {/* нижний div это кнопки */}
-        <div className="mt-3">
+        <div className="mt-5">
           <div className='
            gap-4 grid grid-cols-2 items-baseline text-center'>
             <button
