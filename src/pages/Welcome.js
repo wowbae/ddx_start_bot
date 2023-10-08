@@ -1,7 +1,7 @@
 import MyCombobox from "../components/ui/MyCombobox"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { KeyboardAvoidingView } from 'react-native';
+// import { KeyboardAvoidingView } from 'react-native';
 
 const gyms = [
   { id: 1, name: 'DDX Авиапарк' },
@@ -46,7 +46,7 @@ export const Welcome = () => {
   }
 
   return (
-    <KeyboardAvoidingView behavior="position" style={''}>
+    // <KeyboardAvoidingView behavior="position" style={''}>
     <div className="
         relative
         grid 
@@ -90,7 +90,7 @@ export const Welcome = () => {
           </a>
       </footer>
     </div>
-    </KeyboardAvoidingView>
+    // </KeyboardAvoidingView>
   )
 }
 
