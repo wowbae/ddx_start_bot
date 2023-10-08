@@ -96,8 +96,13 @@ export default function ContactForm (props) {
       </div>
       
       {/* Начинается форма */}
-      <form action="#" method="POST" className="mx-auto mt-12 max-w-xl">
+      <form action="#" method="POST" className="mx-auto mt-10 max-w-xl">
+        <p className="
+          mb-5 px-8 text-sm font-semibold leading-6 text-gray-900">
+          Ваш клуб: {gymName}
+        </p>
         <div className="px-8 sm:px-0 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+          
           <div>
             <label htmlFor="first-name" className="
               block text-sm font-semibold leading-6 text-gray-900">
@@ -194,74 +199,75 @@ export default function ContactForm (props) {
             </div>
           </div>
 
-          <div className=''>
-            <label className="
-              text-sm font-semibold leading-6 text-gray-900">
-              Ваш клуб: {gymName}
-            </label>
+          <div className='grid items-end'>
+            
 
-            {/* политика конфиденциальности */}
-            <div className='mt-7 grid sm:align-bottom'> 
-            <Switch.Group as="div" className="
-              flex sm:col-span-2">
+            {/* политика конфиденциальности переключатель и кнопки*/}
+            <div className='mt-4'>
+              <div className='   '> 
+              <Switch.Group as="div" className="
+                flex sm:col-span-2">
 
-              <div className="
-              flex h-6 items-center"> 
-                <Switch
-                  id='switch'
-                  checked={agreed}
-                  onChange={setAgreed}
-                  className={classNames(
-                    agreed 
-                    ? 'bg-indigo-600' 
-                    : 'bg-gray-200',
-                    'flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2  focus-visible:outline-indigo-600'
-                  )}
-                >
-                  <span
+                <div className="
+                flex h-6 items-center"> 
+                  <Switch
+                    id='switch'
+                    checked={agreed}
+                    onChange={setAgreed}
                     className={classNames(
-                      agreed ? 'translate-x-3.5' : 'translate-x-0',
-                      'h-4 w-4 transform rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out'
+                      agreed 
+                      ? 'bg-indigo-600' 
+                      : 'bg-gray-200',
+                      'flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2  focus-visible:outline-indigo-600'
                     )}
-                  />
-                </Switch>
-                </div>
-                <Switch.Label className="
-                text-start ml-4 text-sm w-auto text-gray-600">
-                  Подтверждаю согласие с {' '}
-                  <a href="https://google.ru" className="font-semibold text-indigo-600">
-                    политикой&nbsp;конфиденциальности.
-                  </a>
-                </Switch.Label>
-              </Switch.Group>
+                  >
+                    <span
+                      className={classNames(
+                        agreed ? 'translate-x-3.5' : 'translate-x-0',
+                        'h-4 w-4 transform rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out'
+                      )}
+                    />
+                  </Switch>
+                  </div>
+
+                  <Switch.Label className="
+                  text-start ml-4 text-sm w-auto text-gray-600">
+                    Подтверждаю согласие с {' '}
+                    <a href="https://google.ru" className="font-semibold text-indigo-600">
+                      политикой&nbsp;конфиденциальности.
+                    </a>
+                  </Switch.Label>
+                </Switch.Group>
+              </div>
+
+              {/* нижний div это кнопки */}
+              <div className='
+              mt-0 gap-4 grid grid-cols-2 items-baseline text-center'>
+                <button
+                    type="button"
+                    onClick={routeChange}
+                    className="block w-full rounded-md h-9 border-orange-300 border-2  
+                    text-center text-sm font-semibold
+                    text-orange-400 shadow-sm hover:bg-orange-300 hover:text-white
+                    focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
+                    focus-visible:outline-indigo-600">
+                    Сменить клуб
+                </button>
+
+                <button
+                  type="submit"
+                  className="mt-4 h-9 w-auto rounded-md
+                  bg-indigo-600 px-3.5 text-center text-sm font-semibold 
+                  text-white shadow-sm hover:bg-indigo-500 focus-visible:outline 
+                  focus-visible:outline-2 focus-visible:outline-offset-2 
+                  focus-visible:outline-indigo-600"
+                  onClick={ handleSubmit }
+                > Отправить
+                </button>
+              </div>   
             </div>
-
-            {/* нижний div это кнопки */}
-            <div className='
-            mt-0 gap-4 grid grid-cols-2 items-baseline text-center'>
-              <button
-                  type="button"
-                  onClick={routeChange}
-                  className="block w-full rounded-md h-9 border-orange-300 border-2  
-                  text-center text-sm font-semibold
-                  text-orange-400 shadow-sm hover:bg-orange-300 hover:text-white
-                  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
-                  focus-visible:outline-indigo-600">
-                  Сменить клуб
-              </button>
-
-              <button
-                type="submit"
-                className="mt-4 h-9 w-auto rounded-md
-                bg-indigo-600 px-3.5 text-center text-sm font-semibold 
-                text-white shadow-sm hover:bg-indigo-500 focus-visible:outline 
-                focus-visible:outline-2 focus-visible:outline-offset-2 
-                focus-visible:outline-indigo-600"
-                onClick={ handleSubmit }
-              > Отправить
-              </button>
-            </div>   
           </div>
+
         </div>
       </form>
     </div>

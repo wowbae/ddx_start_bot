@@ -54,7 +54,7 @@ export default function MyCombobox () {
       <Combobox value={selected || ''} onChange={setSelected}>
         { useEffect(()=>{
             selected && routeChange('/form', {state: selected })
-          }, [])
+          }, [selected])
         }
 
         <div className="relative mt-1">
