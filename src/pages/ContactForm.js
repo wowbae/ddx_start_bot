@@ -62,13 +62,12 @@ export default function ContactForm (props) {
           parse_mode: 'html',
           reply_markup: keys
         })
-        // render(<Notification />)
       } else 
-        return (
+        render (
           <Notification msg={'Пожалуйста, согласитесь с политикой конфиденциальности 🙏🏼'} />
         )
     } else
-    return (
+    render (
         <Notification msg={'Введите пожалуйста имя и телефон для связи 🙏🏼'} />
     )
   }
