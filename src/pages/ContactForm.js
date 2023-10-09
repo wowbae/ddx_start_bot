@@ -8,23 +8,18 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { InlineKeyboard } from "grammy";
 import Notification from '../components/ui/Notification'
 import { bot } from '../bot/index'
-import { render } from '@testing-library/react';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const showNotification = (props) => {
-  // console.log(props);
-  return (
-    <div>
-      <Notification msg={props} />
-    </div>
-  )
-}
+
 
 export default function ContactForm (props) {
-  const [agreed, setAgreed] = useState(false)
+  const 
+  [agreed, setAgreed] = useState(false),
+  [notification, setNotification] = useState(null)
+
   let navigate = useNavigate(); 
   const routeChange = (path, data) => { 
     path = `/`; 
@@ -36,7 +31,7 @@ export default function ContactForm (props) {
   const gymName = location.state.name;
   let chatId = location.state.chatId;
 
-
+  
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -45,6 +40,15 @@ export default function ContactForm (props) {
     last_name = document.getElementById ('last-name').value,
     message = document.getElementById ('message').value || 'Не оставили информации :(',
     prefix =  document.getElementById ('country').value
+
+    // Функция для отображения уведомления
+    function showNotification(msg) {
+      setNotification(msg);
+      // Удаляем уведомление через 3 секунды
+      setTimeout(() => {
+        setNotification(null);
+      }, 3000);
+    }
 
     let
     phone = document.getElementById ('phone-number').value
@@ -71,16 +75,10 @@ export default function ContactForm (props) {
           parse_mode: 'html',
           reply_markup: keys
         })
-      } else showNotification('Пожалуйста, согласитесь с политикой конфиденциальности 🙏🏼')
-        // render (
-        //   <Notification msg={} />
-        // )
-    } else showNotification('Введите пожалуйста имя и телефон для связи 🙏🏼')
-    // render (
-    //     <Notification msg={} />
-    // )
+        showNotification (['Супер!','Запрос получен :)'])
+      } else showNotification (['Ошибка', 'Пожалуйста, согласитесь с политикой конфиденциальности 🙏🏼'])
+    } else showNotification (['Ошибка', 'Введите пожалуйста имя и телефон для связи 🙏🏼'])
   }
-
 
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
@@ -274,6 +272,7 @@ export default function ContactForm (props) {
                   onClick={ handleSubmit }
                 > Отправить
                 </button>
+                {notification && <Notification msg={notification} />}
               </div>   
             </div>
           </div>

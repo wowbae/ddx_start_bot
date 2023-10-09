@@ -7,10 +7,10 @@ import { XIcon } from '@heroicons/react/solid'
 export default function Notification (props) {
   const [show, setShow] = useState(true)
 
-  console.log(props);
-  setTimeout(() => { 
-      setShow(false); 
-    }, 3000)
+  // console.log(props);
+  // setTimeout(() => { 
+  //     setShow(false); 
+  //   }, 3000)
 
   return (
     <>
@@ -39,8 +39,8 @@ export default function Notification (props) {
                     <CheckCircleIcon className="h-6 w-6 text-green-400" aria-hidden="true" />
                   </div>
                   <div className="ml-3 w-0 flex-1 pt-0.5">
-                    <p className="text-sm font-medium text-gray-900">Ошибка!</p>
-                    <p className="mt-1 text-sm text-gray-500">{props.msg}</p>
+                    <p className="text-sm font-medium text-gray-900">{props.msg[0]}</p>
+                    <p className="mt-1 text-sm text-gray-500">{props.msg[1]}</p>
                   </div>
                   <div className="ml-4 flex-shrink-0 flex">
                     <button
