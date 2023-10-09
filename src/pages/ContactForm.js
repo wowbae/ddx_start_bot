@@ -16,7 +16,7 @@ function classNames(...classes) {
 
 const showNotification = (props) => {
   // console.log(props);
-  render (
+  return (
     <div>
       <Notification msg={props} />
     </div>
