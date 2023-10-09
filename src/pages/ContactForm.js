@@ -64,11 +64,11 @@ export default function ContactForm (props) {
         })
         // render(<Notification />)
       } else 
-        render (
+        return (
           <Notification msg={'Пожалуйста, согласитесь с политикой конфиденциальности 🙏🏼'} />
         )
     } else
-    render (
+    return (
         <Notification msg={'Введите пожалуйста имя и телефон для связи 🙏🏼'} />
     )
   }

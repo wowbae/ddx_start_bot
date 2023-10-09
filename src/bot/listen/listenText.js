@@ -6,18 +6,14 @@ const webKey = new InlineKeyboard()
 export default async function listenText (ctx) {
     const msg = ctx.message
 
-    ctx.reply('got it')
-
     switch (msg.text) {
         case '/start': 
-            ctx.reply(' Перейдите по кнопке', {
+            ctx.reply('Запись на Фитнес диагностику или другой вопрос по кнопке 👇🏻', {
                 reply_markup: webKey
             })
-            
         break
 
         default:
-            // if (!msg.contact)
             await ctx.reply ("Список команд /help")
         break
 
