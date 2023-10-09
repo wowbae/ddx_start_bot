@@ -1,6 +1,5 @@
 import '../app/App.css';
 import ContactForm from '../../pages/contact-form';
-import { useEffect } from 'react';
 
 const tg = window.Telegram.WebApp
 
@@ -16,7 +15,6 @@ function App() {
   return (
     <div className="App">
       <ContactForm />
-      
     </div>
   );
 }

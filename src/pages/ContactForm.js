@@ -7,7 +7,7 @@ import { Switch } from '@headlessui/react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { InlineKeyboard } from "grammy";
 import Notification from '../components/ui/Notification'
-import { bot } from '../index'
+import { bot } from '../bot/index'
 import { render } from '@testing-library/react';
 
 function classNames(...classes) {

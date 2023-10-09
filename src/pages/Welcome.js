@@ -21,21 +21,15 @@ export const Welcome = () => {
       return gym.name.toLowerCase().includes(e.toLowerCase())
     })
 
-    // console.log ();
-
     if (f.length === 1 ) {
-      // f[0] - объект с id и name клуба
       routeChange('/form', {state: f[0] } )
-      // console.log('great'); // работает 
     }
   }
 
   function handleKeyDown(event) {
-    
     if (event.key === "Enter" || event.key === "Tab") {
       // console.log( event.key )
     } 
-    // Пользователь выбрал клуб, переходим к следующей форме
     // Здесь вы можете добавить логику для перехода к следующей форме
   }
 
@@ -46,25 +40,20 @@ export const Welcome = () => {
   }
 
   return (
-    // <KeyboardAvoidingView behavior="position" style={''}>
     <div className="
-        relative
-        grid 
-        grid-rows-2
-        h-screen
-        min-h-fit
-        justify-self-center
-        mt-0">
-        {/* <div className="w-full grid grid-cols-1 p-20 mt-32 gap-6"> */}
+        relative grid grid-rows-2 h-screen
+        min-h-fit justify-self-center mt-0">
         <div className="
           w-10/12 
           flex-col
           justify-self-center
           px-6 py-44 
           sm:py-44 lg:px-8">
-          <h1 className="mb-14 text-center font-bold text-2xl">Добро пожаловать в DDX Fitness 🦾</h1>
+          <h1 className="mb-14 text-center font-bold text-2xl">
+            Добро пожаловать в DDX Fitness 🦾</h1>
           <div className="grid gap-2 text-center items-center align-middle">
-              <span className="text-sm text-slate-500 text-">Выберите ваш клуб</span>
+              <span className="text-sm text-slate-500 text-">
+                Выберите ваш клуб</span>
               {/* w-1/3  */}
               <div className="
                   justify-self-center">
@@ -76,7 +65,6 @@ export const Welcome = () => {
                     onKeyDown={handleKeyDown} 
                   />
                   <MyCombobox />
-                  
               </div>
           </div>
       </div>

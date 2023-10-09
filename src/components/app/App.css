@@ -5,7 +5,6 @@
 body {
   background: var(--tg-theme-bg-color)
   color: var(--tg-theme-text-color)
-  text: var(--tg-theme-text-color)
 }
 
 .App-logo {

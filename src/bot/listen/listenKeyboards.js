@@ -1,4 +1,4 @@
-import bot from '../index'
+import bot from '../../index'
 
 export default async function listenKeyboards (ctx) {
 
