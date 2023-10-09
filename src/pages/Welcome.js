@@ -42,33 +42,36 @@ export const Welcome = () => {
   
 
   return (
-    <div className="bg-white
-        relative grid grid-rows-2 h-screen
-        min-h-fit justify-self-center mt-0">
-        <div className="
-          w-10/12 
-          flex-col
-          justify-self-center
-          px-6 py-44 
-          sm:py-44 lg:px-8">
-          <h1 className="mb-14 text-center font-bold text-2xl">
-            Добро пожаловать в DDX Fitness 🦾</h1>
-          <div className="grid gap-2 text-center items-center align-middle">
-              <span className="text-sm text-slate-500 text-">
-                Выберите ваш клуб</span>
-              {/* w-1/3  */}
-              <div className="
-                  justify-self-center">
-                  <input 
-                    // type="text" 
-                    type="hidden" 
-                    value={value || ''} 
-                    onChange={handleChange} 
-                    onKeyDown={handleKeyDown} 
-                  />
-                  <MyCombobox />
-              </div>
-          </div>
+    <>
+      <div className="bg-white
+          relative grid grid-rows-1 h-screen
+          min-h-fit justify-self-center mt-0">
+          <div className="
+            w-10/12 
+            flex-col
+            justify-self-center
+            px-6 py-44 
+            sm:py-44 lg:px-8">
+            <h1 className="mb-14 text-center font-bold text-2xl">
+              Добро пожаловать в DDX Fitness 🦾</h1>
+            <div className="grid gap-2 text-center items-center align-middle">
+                <span className="text-sm text-slate-500 text-">
+                  Выберите ваш клуб</span>
+                {/* w-1/3  */}
+                <div className="
+                    justify-self-center">
+                    <input 
+                      // type="text" 
+                      type="hidden" 
+                      value={value || ''} 
+                      onChange={handleChange} 
+                      onKeyDown={handleKeyDown} 
+                    />
+                    <MyCombobox />
+                </div>
+            </div>
+        </div>
+        
       </div>
       <footer className="footer absolute align-bottom pb-14">
           <a 
@@ -79,7 +82,7 @@ export const Welcome = () => {
               made by @wowbae 
           </a>
       </footer>
-    </div>
+    </>
     // </KeyboardAvoidingView>
   )
 }

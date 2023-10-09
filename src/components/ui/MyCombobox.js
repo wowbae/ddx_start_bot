@@ -40,11 +40,21 @@ export default function MyCombobox () {
     }
   }
 
-
   let navigate = useNavigate(); 
   const routeChange = (path, data) => { 
     // path = `/form`; 
     navigate(path, data);
+  }
+
+  function hideKeyboard(element) { // не работает
+    element.attr('readonly', 'readonly'); // Force keyboard to hide on input field.
+    element.attr('disabled', 'true'); // Force keyboard to hide on textarea field.
+    setTimeout(function() {
+        element.blur();  //actually close the keyboard
+        // Remove readonly attribute after keyboard is hidden.
+        element.removeAttr('readonly');
+        element.removeAttr('disabled');
+    }, 100);
   }
 
 
@@ -54,7 +64,7 @@ export default function MyCombobox () {
       <Combobox value={selected || ''} onChange={setSelected}>
         { useEffect(()=>{
             selected && routeChange('/form', {state: selected })
-          }, [selected])
+          }) // тут еще был массив [selected]
         }
 
         <div className="relative mt-1">
@@ -68,6 +78,7 @@ export default function MyCombobox () {
               <SelectorIcon
                 className="h-5 w-5 text-gray-400"
                 aria-hidden="true"
+                // onClick={hideKeyboard}
               />
             </Combobox.Button>
           </div>
