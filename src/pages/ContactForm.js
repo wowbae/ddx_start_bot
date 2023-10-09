@@ -14,6 +14,15 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+const showNotification = (props) => {
+  // console.log(props);
+  render (
+    <div>
+      <Notification msg={props} />
+    </div>
+  )
+}
+
 export default function ContactForm (props) {
   const [agreed, setAgreed] = useState(false)
   let navigate = useNavigate(); 
@@ -62,17 +71,17 @@ export default function ContactForm (props) {
           parse_mode: 'html',
           reply_markup: keys
         })
-      } else 
-        render (
-          <Notification msg={'Пожалуйста, согласитесь с политикой конфиденциальности 🙏🏼'} />
-        )
-    } else
-    render (
-        <Notification msg={'Введите пожалуйста имя и телефон для связи 🙏🏼'} />
-    )
+      } else showNotification('Пожалуйста, согласитесь с политикой конфиденциальности 🙏🏼')
+        // render (
+        //   <Notification msg={} />
+        // )
+    } else showNotification('Введите пожалуйста имя и телефон для связи 🙏🏼')
+    // render (
+    //     <Notification msg={} />
+    // )
   }
 
-  
+
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
       {/* <button >Close</button> */}

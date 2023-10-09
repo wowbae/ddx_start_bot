@@ -7,6 +7,7 @@ import { XIcon } from '@heroicons/react/solid'
 export default function Notification (props) {
   const [show, setShow] = useState(true)
 
+  console.log(props);
   setTimeout(() => { 
       setShow(false); 
     }, 3000)

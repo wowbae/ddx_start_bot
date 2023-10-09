@@ -1,3 +1,41 @@
+Это должно вот так выглядить
+
+import React, { useState } from 'react';
+
+const Notification = ({ message }) => {
+  return <div className="notification">{message}</div>;
+};
+
+const App = () => {
+  const [notification, setNotification] = useState(null);
+
+  // Функция для отображения уведомления
+  function showNotification(message) {
+    setNotification(message);
+
+    // Удаляем уведомление через 2 секунды
+    setTimeout(() => {
+      setNotification(null);
+    }, 2000);
+  }
+
+  // Пример обработчика события, который вызывает уведомление
+  const handleButtonClick = () => {
+    showNotification('Успешно выполнено!');
+  };
+
+  return (
+    <div>
+      <button onClick={handleButtonClick}>Показать уведомление</button>
+      {notification && <Notification message={notification} />}
+      {/* Остальной код */}
+    </div>
+  );
+}
+
+export default App;
+
+
 Выбор фитнесс-клуба✅
 Ваш input элемент должен выглядеть примерно так:
 <input type="text" value={inputValue} onChange={handleChange} onKeyDown={handleKeyDown} />
