@@ -21,7 +21,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start && src/bot/index.js",
+    "start": "react-scripts start && pm2 src/bot/index.js",
     "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
