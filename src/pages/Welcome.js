@@ -39,8 +39,10 @@ export const Welcome = () => {
     navigate(path, data);
   }
 
+  
+
   return (
-    <div className="
+    <div className="bg-white
         relative grid grid-rows-2 h-screen
         min-h-fit justify-self-center mt-0">
         <div className="
