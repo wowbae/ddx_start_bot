@@ -53,8 +53,8 @@ export default function ContactForm (props) {
     linkWa = 'wa.me/'+ phone.slice(1),
     linkTg = 't.me/'+ phone,
     keys = new InlineKeyboard()
-    .url("WhatsApp", linkWa)
-    .url("Telegram", linkTg)
+      .url("WhatsApp", linkWa)
+      .url("Telegram", linkTg)
      
     if (first_name && phone) {
         if (agreed) {
