@@ -1,5 +1,5 @@
 import MyCombobox from "../components/ui/MyCombobox"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 // import { KeyboardAvoidingView } from 'react-native';
 

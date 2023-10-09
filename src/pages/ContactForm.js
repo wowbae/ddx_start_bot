@@ -5,9 +5,9 @@ import { useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { Switch } from '@headlessui/react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { Bot, InlineKeyboard } from "grammy";
+import { InlineKeyboard } from "grammy";
 import Notification from '../components/ui/Notification'
-import MyModal from '../components/ui/MyModal';
+import { bot } from '../index'
 import { render } from '@testing-library/react';
 
 function classNames(...classes) {
@@ -22,7 +22,6 @@ export default function ContactForm (props) {
     navigate(path, data);
   }
 
-  const bot = new Bot("5312475410:AAEqIlh5nUPxdFpq1J_tab7LGJGR7ILvoSw"); 
   const myId = 251465357
   const location = useLocation();
   const gymName = location.state.name;
@@ -35,7 +34,7 @@ export default function ContactForm (props) {
     const
     first_name = document.getElementById ('first-name').value,
     last_name = document.getElementById ('last-name').value,
-    message = document.getElementById ('message').value,
+    message = document.getElementById ('message').value || 'Не оставили информации :(',
     prefix =  document.getElementById ('country').value
 
     let
@@ -50,7 +49,7 @@ export default function ContactForm (props) {
     } 
 
     const msg = 
-    `Новый запрос на ФТ ✅\n${chatId ? '' : (chatId = myId, '\nКлуб: ' + gymName )}\nФИО: ${last_name+' '+first_name}\nТелефон: <code>${phone}</code>\n\nПожелания:\n"${message}"`,
+    `Новый запрос на ФТ ✅\n${chatId ? '' : (chatId = myId, '\nКлуб: ' + gymName )}\nФИО: ${last_name+' '+first_name}\nТелефон: <code>${phone}</code>\n\nПожелания:\n${message?.trim()}`,
     linkWa = 'wa.me/'+ phone.slice(1),
     linkTg = 't.me/'+ phone,
     keys = new InlineKeyboard()
@@ -77,6 +76,7 @@ export default function ContactForm (props) {
   
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+      {/* <button >Close</button> */}
       <div
         className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
         aria-hidden={true}>
@@ -89,7 +89,8 @@ export default function ContactForm (props) {
         />
       </div>
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Заполните форму, пожалуйста</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900      sm:text-4xl">Заполните форму, пожалуйста
+        </h2>
         <p className="px-10 mt-2 text-sm leading-6 text-gray-600">
           Мы передадим информацию координатору, он подберет тренера, который свяжется с вами.
         </p>
@@ -98,7 +99,7 @@ export default function ContactForm (props) {
       {/* Начинается форма */}
       <form action="#" method="POST" className="mx-auto mt-10 max-w-xl">
         <p className="
-          mb-5 px-8 text-sm font-semibold leading-6 text-gray-900">
+          px-8 sm:px-0 mb-6 text-m font-semibold leading-6 text-gray-900">
           Ваш клуб: {gymName}
         </p>
         <div className="px-8 sm:px-0 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
@@ -111,7 +112,7 @@ export default function ContactForm (props) {
             <div className="mt-2.5">
               <input
                 type="text"
-                name="first-name"
+                name="firstName"
                 id="first-name"
                 autoComplete="given-name"
                 className="
@@ -132,7 +133,7 @@ export default function ContactForm (props) {
             <div className="mt-2.5">
               <input
                 type="text"
-                name="last-name"
+                name="lastName"
                 id="last-name"
                 autoComplete="family-name"
                 className="block w-full rounded-md border-0 px-3.5 py-2
@@ -159,6 +160,7 @@ export default function ContactForm (props) {
                 </label>
                 <select
                   hidden={true}
+                  autoComplete='off'
                   id="country"
                   name="country"
                   className="h-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
@@ -176,7 +178,7 @@ export default function ContactForm (props) {
               <input
                 placeholder='начиная с "+7"'
                 type="tel"
-                name="phone-number"
+                name="phoneNumber"
                 id="phone-number"
                 autoComplete="tel"
                 className="block w-full rounded-md border-0 py-2 pl-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -185,12 +187,12 @@ export default function ContactForm (props) {
           </div>
           <div className="sm:col-span-1">
             <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
-              Пожелания по дате, времени и тренеру
+              Пожелания по дате, времени и тренеру / любой другой вопрос
             </label>
             <div className="mt-2.5">
               <textarea
                 autoComplete = "off"
-                name="message"
+                name="Message"
                 id="message"
                 rows={5}
                 className="h-auto block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
