@@ -73,7 +73,7 @@ export const Welcome = () => {
         </div>
         
       </div>
-      <footer className="footer absolute align-bottom pb-14">
+      {/* <footer className="footer absolute align-bottom pb-14">
           <a 
               href='https://t.me/wowbae'
               target="_blank"
@@ -81,7 +81,7 @@ export const Welcome = () => {
               className='text-gray-400'> 
               made by @wowbae 
           </a>
-      </footer>
+      </footer> */}
     </>
     // </KeyboardAvoidingView>
   )

@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import ContactForm from './pages/ContactForm';
 import ErrorPage from './pages/Error-page';
+import { Done } from './pages/Done'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "form/", /*:contactId*/
     element: <ContactForm/> // сомнения в {props}
+  },
+  {
+    path: "done/", 
+    element: <Done/>
   },
 ]);
 
