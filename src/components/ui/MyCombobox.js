@@ -47,14 +47,16 @@ export default function MyCombobox () {
   }
 
   function hideKeyboard(element) { // не работает
-    element.attr('readonly', 'readonly'); // Force keyboard to hide on input field.
-    element.attr('disabled', 'true'); // Force keyboard to hide on textarea field.
-    setTimeout(function() {
-        element.blur();  //actually close the keyboard
-        // Remove readonly attribute after keyboard is hidden.
-        element.removeAttr('readonly');
-        element.removeAttr('disabled');
-    }, 100);
+    const doc = document.getElementById('welcome-input')
+    doc.blur()
+    // element.attr('readonly', 'readonly'); // Force keyboard to hide on input field.
+    // element.attr('disabled', 'true'); // Force keyboard to hide on textarea field.
+    // setTimeout(function() {
+    //     element.blur();  //actually close the keyboard
+    //     // Remove readonly attribute after keyboard is hidden.
+    //     element.removeAttr('readonly');
+    //     element.removeAttr('disabled');
+    // }, 100);
   }
 
 
@@ -70,6 +72,7 @@ export default function MyCombobox () {
         <div className="relative mt-1">
           <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
             <Combobox.Input
+              id='welcome-input'
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
               displayValue={(gym) => gym.name}
               onChange={handleChange}
@@ -78,7 +81,7 @@ export default function MyCombobox () {
               <SelectorIcon
                 className="h-5 w-5 text-gray-400"
                 aria-hidden="true"
-                // onClick={hideKeyboard}
+                onClick={hideKeyboard}
               />
             </Combobox.Button>
           </div>
