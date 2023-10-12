@@ -18,6 +18,7 @@ export default function MyCombobox () {
   const [query, setQuery] = useState('')
   const [value, setValue] = useState()
 
+  // от Исмаила
   const inputRef = useRef(null);
   const resultsContainerRef = useRef(null);
 
@@ -28,6 +29,7 @@ export default function MyCombobox () {
   const handleScroll = () => {
     document.activeElement.blur();
   };
+  // от Исмаила
   
 
   const filteredPeople =
@@ -85,33 +87,8 @@ export default function MyCombobox () {
       </div>
     );
   }
+  // от Исмаила
   
-  
-  // не использую
-  // const hideKeyboardOnScroll = () => {
-  //   const handleScroll = () => {
-  //     if (searchInputRef.current) {
-  //         searchInputRef.current.blur();
-  //     }
-  //     document.removeEventListener("scroll", handleScroll, true);
-  //   };
-
-  //   document.addEventListener("scroll", handleScroll, true);
-  // };
-
-  // function hideKeyboard(element) { // не работает
-  //   const doc = document.getElementById('welcome-input')
-  //   doc.blur()
-    // element.attr('readonly', 'readonly'); // Force keyboard to hide on input field.
-    // element.attr('disabled', 'true'); // Force keyboard to hide on textarea field.
-    // setTimeout(function() {
-    //     element.blur();  //actually close the keyboard
-    //     // Remove readonly attribute after keyboard is hidden.
-    //     element.removeAttr('readonly');
-    //     element.removeAttr('disabled');
-    // }, 100);
-  // }
-
 
   return (
     // <div className="fixed top-16 w-72">
@@ -136,7 +113,7 @@ export default function MyCombobox () {
               <SelectorIcon
                 className="h-5 w-5 text-gray-400"
                 aria-hidden="true"
-                
+                onClick={handleBlur}
               />
             </Combobox.Button>
           </div>
