@@ -56,7 +56,7 @@ export const Welcome = () => {
             justify-self-center
             px-6 py-44 
             sm:py-44 lg:px-8">
-            <h1 className="mb-14 text-center font-bold text-2xl">
+            <h1 id='h1' className="mb-14 text-center font-bold text-2xl">
               Добро пожаловать в DDX Fitness 🦾</h1>
             <div className="grid gap-2 text-center items-center align-middle">
                 <span className="text-sm text-slate-500 text-">

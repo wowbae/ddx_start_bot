@@ -24,6 +24,8 @@ export default function MyCombobox () {
 
   const handleBlur = () => {
     document.activeElement.blur();
+    console.log(document.getElementById('h3'))
+    document.getElementById('h1').focus()
   };
 
   const handleScroll = () => {
@@ -59,35 +61,6 @@ export default function MyCombobox () {
     // path = `/form`; 
     navigate(path, data);
   }
-
-  // от Исмаила
-  function ClubSelection() {
-    // const inputRef = useRef(null);
-    // const resultsContainerRef = useRef(null);
-  
-    // const handleBlur = () => {
-    //   document.activeElement.blur();
-    // };
-  
-    // const handleScroll = () => {
-    //   document.activeElement.blur();
-    // };
-  
-    return (
-      <div>
-        <input
-          ref={inputRef}
-          type="text"
-          placeholder="Выберите клуб"
-          onBlur={handleBlur}
-        />
-        <div ref={resultsContainerRef} onScroll={handleScroll}>
-          {/* Здесь отображаются результаты выбора клуба */}
-        </div>
-      </div>
-    );
-  }
-  // от Исмаила
   
 
   return (
