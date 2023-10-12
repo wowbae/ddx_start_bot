@@ -24,8 +24,8 @@ export default function MyCombobox () {
 
   const handleBlur = () => {
     document.activeElement.blur();
-    console.log(document.getElementById('h3'))
-    document.getElementById('h1').focus()
+    console.log(document.getElementById('h2'))
+    document.getElementById('h2').focus()
   };
 
   const handleScroll = () => {
@@ -66,6 +66,7 @@ export default function MyCombobox () {
   return (
     // <div className="fixed top-16 w-72">
     <div className="">
+      <div id='h2'></div>
       <Combobox value={selected || ''} onChange={setSelected}>
         { useEffect(()=>{
             selected && routeChange('/form', {state: selected })
