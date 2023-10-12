@@ -1,6 +1,7 @@
 import MyCombobox from "../components/ui/MyCombobox"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+// import  { ScrollView } from "react-native"
 // import { KeyboardAvoidingView } from 'react-native';
 
 const gyms = [
@@ -70,7 +71,10 @@ export const Welcome = () => {
                       onChange={handleChange} 
                       onKeyDown={handleKeyDown} 
                     />
-                    <MyCombobox />
+                    {/* <ScrollView keyboardDismissMode='on-drag'> */}
+                      <MyCombobox />
+                    {/* </ScrollView> */}
+                    
                 </div>
             </div>
         </div>

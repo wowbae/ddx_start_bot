@@ -17,9 +17,18 @@ export default function MyCombobox () {
   const [selected, setSelected] = useState()
   const [query, setQuery] = useState('')
   const [value, setValue] = useState()
-  const searchInputRef = useRef(null);
-  
 
+  const inputRef = useRef(null);
+  const resultsContainerRef = useRef(null);
+
+  const handleBlur = () => {
+    document.activeElement.blur();
+  };
+
+  const handleScroll = () => {
+    document.activeElement.blur();
+  };
+  
 
   const filteredPeople =
     query === ''
@@ -49,21 +58,50 @@ export default function MyCombobox () {
     navigate(path, data);
   }
 
+  // от Исмаила
+  function ClubSelection() {
+    // const inputRef = useRef(null);
+    // const resultsContainerRef = useRef(null);
   
-  const hideKeyboardOnScroll = () => {
-    const handleScroll = () => {
-      if (searchInputRef.current) {
-          searchInputRef.current.blur();
-      }
-      document.removeEventListener("scroll", handleScroll, true);
-    };
+    // const handleBlur = () => {
+    //   document.activeElement.blur();
+    // };
+  
+    // const handleScroll = () => {
+    //   document.activeElement.blur();
+    // };
+  
+    return (
+      <div>
+        <input
+          ref={inputRef}
+          type="text"
+          placeholder="Выберите клуб"
+          onBlur={handleBlur}
+        />
+        <div ref={resultsContainerRef} onScroll={handleScroll}>
+          {/* Здесь отображаются результаты выбора клуба */}
+        </div>
+      </div>
+    );
+  }
+  
+  
+  // не использую
+  // const hideKeyboardOnScroll = () => {
+  //   const handleScroll = () => {
+  //     if (searchInputRef.current) {
+  //         searchInputRef.current.blur();
+  //     }
+  //     document.removeEventListener("scroll", handleScroll, true);
+  //   };
 
-    document.addEventListener("scroll", handleScroll, true);
-  };
+  //   document.addEventListener("scroll", handleScroll, true);
+  // };
 
-  function hideKeyboard(element) { // не работает
-    const doc = document.getElementById('welcome-input')
-    doc.blur()
+  // function hideKeyboard(element) { // не работает
+  //   const doc = document.getElementById('welcome-input')
+  //   doc.blur()
     // element.attr('readonly', 'readonly'); // Force keyboard to hide on input field.
     // element.attr('disabled', 'true'); // Force keyboard to hide on textarea field.
     // setTimeout(function() {
@@ -72,7 +110,7 @@ export default function MyCombobox () {
     //     element.removeAttr('readonly');
     //     element.removeAttr('disabled');
     // }, 100);
-  }
+  // }
 
 
   return (
@@ -87,7 +125,8 @@ export default function MyCombobox () {
         <div className="relative mt-1">
           <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
             <Combobox.Input
-              ref={searchInputRef}
+              ref={inputRef}
+              onBlur={handleBlur}
               id='welcome-input'
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
               displayValue={(gym) => gym.name}
@@ -97,7 +136,7 @@ export default function MyCombobox () {
               <SelectorIcon
                 className="h-5 w-5 text-gray-400"
                 aria-hidden="true"
-                onClick={hideKeyboard}
+                
               />
             </Combobox.Button>
           </div>
@@ -107,52 +146,53 @@ export default function MyCombobox () {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
             afterLeave={() => setQuery('')}
-          >
-            <Combobox.Options
-            ref={searchInputRef}
-            onTouchStart={hideKeyboardOnScroll}
-            className="search-result
-            absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-              {filteredPeople.length === 0 && query !== '' ? (
-                <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
-                  Nothing found.
-                </div>
-              ) : (
-                filteredPeople.map((gym) => (
-                  <Combobox.Option
-                    key={gym.id}
-                    className={({ active }) =>
-                      `rounded-md mx-1 relative cursor-default select-none py-2 pl-10 pr-4 ${
-                        active ? 'bg-indigo-600 text-white' : 'text-gray-900'
-                      }`
-                    }
-                    value={gym}
-                  >
-                    {({ selected, active }) => (
-                      <>
-                        <span
-                          className={`block truncate ${
-                            selected ? 'font-medium' : 'font-normal'
-                          }`}
-                        >
-                          {gym.name}
-                        </span>
-
-                        {selected ? (
+          > 
+            <div ref={resultsContainerRef} onScroll={handleScroll}>
+              <Combobox.Options 
+              // onTouchStart={hideKeyboardOnScroll}
+              className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                {filteredPeople.length === 0 && query !== '' ? (
+                  <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
+                    Nothing found.
+                  </div>
+                ) : (
+                  filteredPeople.map((gym) => (
+                    <Combobox.Option
+                      key={gym.id}
+                      className={({ active }) =>
+                        `rounded-md mx-1 relative cursor-default select-none py-2 pl-10 pr-4 ${
+                          active ? 'bg-indigo-600 text-white' : 'text-gray-900'
+                        }`
+                      }
+                      value={gym}
+                    >
+                      {({ selected, active }) => (
+                        <>
                           <span
-                            className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                              active ? 'text-white' : 'text-teal-600'
+                            className={`block truncate ${
+                              selected ? 'font-medium' : 'font-normal'
                             }`}
                           >
-                            <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                            {gym.name}
                           </span>
-                        ) : null}
-                      </>
-                    )}
-                  </Combobox.Option>
-                ))
-              )}
-            </Combobox.Options>
+
+                          {selected ? (
+                            <span
+                              className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                                active ? 'text-white' : 'text-teal-600'
+                              }`}
+                            >
+                              <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                            </span>
+                          ) : null}
+                        </>
+                      )}
+                    </Combobox.Option>
+                  ))
+                )}
+              </Combobox.Options>
+            </div>
+            
           </Transition>
         </div>
       </Combobox>
