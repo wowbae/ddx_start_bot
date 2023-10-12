@@ -26,6 +26,7 @@ export const Welcome = () => {
     }
   }
 
+
   function handleKeyDown(event) {
     if (event.key === "Enter" || event.key === "Tab") {
       // console.log( event.key )
@@ -43,9 +44,11 @@ export const Welcome = () => {
 
   return (
     <>
+    {/* justify-self-center  */}
       <div className="bg-white
           relative grid grid-rows-1 h-screen
-          min-h-fit justify-self-center mt-0">
+          min-h-fit 
+          mt-0">
           <div className="
             w-10/12 
             flex-col

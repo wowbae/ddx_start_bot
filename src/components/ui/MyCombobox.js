@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react'
+import { Fragment, useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Combobox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
@@ -17,6 +17,9 @@ export default function MyCombobox () {
   const [selected, setSelected] = useState()
   const [query, setQuery] = useState('')
   const [value, setValue] = useState()
+  const searchInputRef = useRef(null);
+  
+
 
   const filteredPeople =
     query === ''
@@ -46,6 +49,18 @@ export default function MyCombobox () {
     navigate(path, data);
   }
 
+  
+  const hideKeyboardOnScroll = () => {
+    const handleScroll = () => {
+      if (searchInputRef.current) {
+          searchInputRef.current.blur();
+      }
+      document.removeEventListener("scroll", handleScroll, true);
+    };
+
+    document.addEventListener("scroll", handleScroll, true);
+  };
+
   function hideKeyboard(element) { // не работает
     const doc = document.getElementById('welcome-input')
     doc.blur()
@@ -72,6 +87,7 @@ export default function MyCombobox () {
         <div className="relative mt-1">
           <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
             <Combobox.Input
+              ref={searchInputRef}
               id='welcome-input'
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
               displayValue={(gym) => gym.name}
@@ -92,7 +108,10 @@ export default function MyCombobox () {
             leaveTo="opacity-0"
             afterLeave={() => setQuery('')}
           >
-            <Combobox.Options className="
+            <Combobox.Options
+            ref={searchInputRef}
+            onTouchStart={hideKeyboardOnScroll}
+            className="search-result
             absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
               {filteredPeople.length === 0 && query !== '' ? (
                 <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
