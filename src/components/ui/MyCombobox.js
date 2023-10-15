@@ -8,6 +8,16 @@ const gyms = [
   { id: 2, chatId: 251465357, name: 'DDX Щука' },
   { id: 3, name: 'DDX Третий' },
   { id: 4, name: 'DDX Четвертый' },
+  { id: 5, name: 'DDX Четвертый' },
+  { id: 6, name: 'DDX Четвертый' },
+  { id: 7, name: 'DDX Четвертый' },
+  { id: 8, name: 'DDX Четвертый' },
+  { id: 9, name: 'DDX Четвертый' },
+  { id: 10, name: 'DDX Четвертый' },
+  { id: 11, name: 'DDX Четвертый' },
+  { id: 12, name: 'DDX Четвертый' },
+  { id: 13, name: 'DDX Четвертый' },
+  { id: 14, name: 'DDX Четвертый' },
   // More users...
 ]
 
