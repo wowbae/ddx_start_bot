@@ -25,6 +25,7 @@ export default function MyCombobox () {
   
   const handleBlur = () => {
     document.activeElement.blur();
+    document.getElementById('welcome-input').blur()
     !selected && document.getElementById('h2').focus()
     // console.log('focus: ',document.activeElement);
   };
@@ -71,7 +72,7 @@ export default function MyCombobox () {
     // <div className="fixed top-16 w-72">
     <div className="">
       <div id='h2' tabIndex='0' role="button"/>
-      <Combobox value={selected || ''} onChange={setSelected}>
+      <Combobox onChange={setSelected}>
         { useEffect(()=>{
             selected && routeChange('/form', {state: selected })
           }) // тут еще был массив [selected]
@@ -79,9 +80,11 @@ export default function MyCombobox () {
 
         <div className="relative mt-1">
           <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
-            <Combobox.Input
+            <input
+              type='text'
+              id='welcome-input'
+              readonly
               ref={inputRef}
-              // id='welcome-input'
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
               displayValue={(gym) => gym.name}
               onChange={handleChange}
