@@ -22,10 +22,11 @@ export default function MyCombobox () {
   const inputRef = useRef(null);
   const resultsContainerRef = useRef(null);
 
+  
   const handleBlur = () => {
     document.activeElement.blur();
-    console.log(document.getElementById('h2'))
-    document.getElementById('h2').focus()
+    !selected && document.getElementById('h2').focus()
+    // console.log('focus: ',document.activeElement);
   };
 
   const handleScroll = () => {
@@ -47,6 +48,9 @@ export default function MyCombobox () {
   function handleChange(event) {
     let e = event.target.value
       setValue(e)
+    if (e === '') {
+      // document.activeElement.blur()
+    }
     let f = gyms.filter((gym) => {
       return gym.name.toLowerCase().includes(e.toLowerCase())
     })
@@ -66,7 +70,7 @@ export default function MyCombobox () {
   return (
     // <div className="fixed top-16 w-72">
     <div className="">
-      <div id='h2'></div>
+      <div id='h2' tabIndex='0' role="button"/>
       <Combobox value={selected || ''} onChange={setSelected}>
         { useEffect(()=>{
             selected && routeChange('/form', {state: selected })
@@ -77,17 +81,19 @@ export default function MyCombobox () {
           <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
             <Combobox.Input
               ref={inputRef}
-              onBlur={handleBlur}
-              id='welcome-input'
+              // id='welcome-input'
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
               displayValue={(gym) => gym.name}
               onChange={handleChange}
             />
-            <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
+            <Combobox.Button 
+                onClick={handleBlur} 
+                className="absolute inset-y-0 right-0 flex items-center pr-2">
               <SelectorIcon
                 className="h-5 w-5 text-gray-400"
                 aria-hidden="true"
-                onClick={handleBlur}
+                onClick={ handleBlur }
+                // onClick={handleBlur}
               />
             </Combobox.Button>
           </div>
@@ -100,6 +106,7 @@ export default function MyCombobox () {
           > 
             <div ref={resultsContainerRef} onScroll={handleScroll}>
               <Combobox.Options 
+              // id='options'
               className="absolute mt-1 max-h-60 w-full overflow-auto 
               rounded-md bg-white py-1 text-base shadow-lg 
               ring-1 ring-black ring-opacity-5 
@@ -108,7 +115,7 @@ export default function MyCombobox () {
               >
                 {filteredPeople.length === 0 && query !== '' ? (
                   <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
-                    Nothing found.
+                    Клуб не найден :(
                   </div>
                 ) : (
                   filteredPeople.map((gym) => (
